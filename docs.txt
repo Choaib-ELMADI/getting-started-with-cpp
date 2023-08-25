@@ -1,0 +1,426 @@
+1. #include <iostream>
+    //! include pre-built libraries
+    std::cout << "Message"; //! print the Message
+    << std::endl;           //! return to a new line
+
+    int a;                                       ==> contains a random garbage value
+    int a = 3; assignement (copy) initialization ==> If necessary, type conversions will be performed
+    int a {3}; direct (list) initialization      ==> This syntax enforces stricter type checking
+    int a (3); functional initialization         ==> similar to direct initialization
+
+    std::cout << std::setprecision(20); //! control the precision of floating-point output
+
+2. Errors & warnings
+    -Compile time errors => when compiling the code
+    -Runtime errors => compiled, but not working as it should
+    -Warnings
+
+3. Inputs & Outputs
+    std::cout  => print data to the console
+    srd::cerr  => print errors to the console
+    srd::clog  => print log messages to the console
+    std::cin   => read data from the console
+    std::getline(std::cin, variableName) => read data with spaces from the console
+
+4. C++ Core Language VS Standard Library VS STL
+    -Core features: the rules that define what to do and not to do
+    -Standard libraries: a set of ready to use components and libraries
+    STL: part of the C++ standard library, a collection of container types
+
+5. Variables & Data types
+    //! Variables:
+        a variable is a named piece of memory used to store a specific type of data.
+
+    //! Data types:
+        int, double, float,
+        char,
+        bool,
+        void, auto, ...
+
+    //! Numbers systems:
+        int number1 = 0b00001111; ==> Binary representation
+        int number2 = 017;        ==> Octal representation
+        int number3 = 15;         ==> Decimal representation
+        int number4 = 0x0f;       ==> Hexadecimal representation
+
+    *** Integers (int):
+        - Stores decimals
+        - Typically occupies 4 bytes or more in memory
+
+    *** Integer modifiers:
+        - signed: store positive or negative values
+        - unsigned: store only positive values
+
+        - short: occupies 2 bytes in memory
+        - long: occupies 4 or 8 bytes in memory
+        - long long: occupies 8 bytes in memory
+
+    *** Fractional numbers:
+        - float: occupies 4 bytes        ==> up to 7 digits
+        - double: occupies 8 bytes       ==> up to 15 digits
+        - long double: occupies 12 bytes ==> more than 15 didgits
+
+        0.0/0.0             ==> nan
+        n(floating point)/0 ==> (+-)inf
+
+    *** Booleans:
+        - bool occupies 1 byte
+        - Printing out a bool (0 - 1):
+            1 -->> true
+            0 -->> false
+        - Printing out true and false:
+            std::cout << std::boolalpha;
+
+    *** Characters & text:
+        - char occupies 1 byte: 2^8 = 256 different values (0 - 255)
+
+    *** Auto:
+        - auto let the compiler decides the type based on the value we passed.
+
+6. Output formatting
+    #include <ios>
+    #include <iomanip>
+
+    std::endl         ==> print a new line
+    std::flush        ==> send data directly to the device connected to the stream
+    std::setw(int)    ==> set the width of the text
+    std::right        ==> justify the text to right
+    std::left         ==> justify the text to left
+    std::internal     ==> justify the data to right, and the sign to left
+    std::setfill('*') ==> fill the blanks with the specified char
+    std::showpos      ==> show the numbers sign
+    std::dec          ==> show the output in decimal format
+    std::hex          ==> show the output in hexadecimal format
+    std::oct          ==> show the output in octal format
+    std::showbase     ==> show the base of data
+    std::uppercase    ==> print the data in uppercases
+    std::noshowpos
+    std::noboolalpha
+
+7. Flow Control: Conditional Programming
+    * if else clause
+    * switch
+    * Ternary expression: result = (condition) ? option1 : option2;
+
+8. Loops
+    * for loop
+    * while loop
+    * do while loop
+    * range based for loop:
+        int scores[] = { 10, 15, 18, 7, 15, 9 };
+        for (auto score : scores) {
+            #do something with score
+        }
+
+    size_t: Not a type, just a type alias for some unsigned int representation
+
+9. Arrays
+    -> Arrays store elements of the same type
+    -> int scores[10];      ==> declare an array of 10 ints with some garbage value
+    -> int scores[10] = {}; ==> declare an array of 10 ints initialized with 0
+
+    -> std::size(scores)    ==> get the size of an array <=> sizeof(scores) / sizeof(scores[0])
+
+    -> char arrays can be printed directly without a loop, by adding a null termination character '\0'
+    -> a char array that is null terminated is called a C-String
+    -> String literal:
+        char message[] = "Hello"; //! sizeof(message) = 6
+        the null termination character is added automaticaly
+
+10. Pointers
+    -> Each variable we declare has an address in memory
+    -> A pointer is a variable that stores this address variable
+    -> All pointer variables have the same size
+
+    --> int *agePointer;
+        int *agePointer = {};
+        int *agePointer = nullptr;
+        <==> declare a pointer initialized with nullptr
+    --> int *agePointer = &age;
+        <==> assign an address to the pointer
+    --> *agePointer; //! Dereferencing pointer
+        <==> read the data pointed to by the pointer
+    --> agePointer;
+        <==> read the address stored in the pointer
+
+    --> Initialize a pointer with a string literal
+        the first char in the string is pointed to by the pointer
+    --> With string literal, we dont need dereferencing the pointer. Dereferencing will give us only the first letter
+
+    Dangling Pointers:
+        a pointer that doesn't point to a valid memory address.
+            * Uninitialized pointer
+            * Deleted pointer
+            * Multiple pointers point to the same memory location
+
+11. Memory Map
+    __> System
+    __> Stack: local variables, function calls, ...
+    __> Heap: additional memory that can be required at the run time
+    __> Data
+    __> Text: the actual binary file to execute
+
+
+    source file  ==> Preprocessing ==>  translation unite  ==> Compilation ==>  object file ==> Linking ==> one binary exe file
+    source file    (replace all the)    translation unite                       object file
+                        (includes)
+
+
+12. Dynamic Memory Allocation
+            Stack                                                       Heap
+    * Memory is finite.                                         * Memory is finite.
+    * The developer isn't in full control                       * The developer is in full control of when memory
+    of the memory lifetime.                                     is allocated and when it's released.
+    * Lifetime is controlled by the scope                       * Lifetime is controlled explicitly through new
+    mechanism.                                                  and delete operators.
+
+    new(std::nothrow) ==> tell the OS to not throw an error if new fails, just assign a nullptr to it.
+
+    Arrays: int *scores = new int[10];
+    Release an array dynamically allocated: delete[] scores;
+    Reset the array: scores = nullptr;
+
+13. TryCatch Block
+    try {
+        #code to check goes here
+    } catch(std::exception& ex) {
+        #if an error occured do this
+        -> ex.what();
+    }
+
+14. References
+    * A reference is an alias variable that we can use to reference an original variable.
+    * We use the reference the same way as the original variable.
+    * Reference should be declared and initialized in one statement.
+    * We declare a reference using the & operator.
+    * Both have the same size, address, type and values.
+    * Changing anyone will reflect on the other.
+    * We can't change the variable referenced to by a reference.
+
+15. Characters & Strings
+    #include <cctype>
+        std::isalnum(char)  ==> alphanumeric
+        std::isalpha(char)  ==> alphabetic
+        std::isblank(char)  ==> blank char
+        std::islower(char)  ==> lower char
+        std::isupper(char)  ==> upper char
+        std::isdigit(char)  ==> digit char
+        std::tolower(char)  ==> return a lowercase char
+        std::toupper(char)  ==> return a uppercase char
+
+    #include <cstring>
+        std::strlen(string) ==> return the length of string (doesn't count the null termination char)
+        std::strcmp(s1, s2) ==> lexicographical order
+        std::strncmp(s1, s2) => lexicographical order for n first char
+        std::stdchr(searchString, targetChar) ==> find first occurrence of the targetChar, and return a pointer to what it found
+        std::stdrchr(searchString, targetChar) => find last occurrence of the targetChar, and return a pointer to what it found
+
+        std::strcat(dest, src) =====> concatenate two strings and assign it to first one
+        std::strncat(dest, src, n) => concatenate n char from src with dest
+        std::strcpy(dest, src) =====> copy src to dest
+        std::strncpy(dest, src, n) => copy n char from src to dest
+
+16. String type
+    #include <string>
+
+17. Functions
+    * A function is unique by its signature: function name + function parameters
+    * When we pass arguments to a function, we're passing copies not actual variables
+
+18. Pass by Value / Pass by Pointer / Pass by Reference
+    * In pass by value, we pass just a copy of the arguments. The arguments change only in their scope.
+    * In pass by pointer, we pass the address of the original variable. Changes reflect on the whole program.
+    * In pass by reference, the changes are reflected on the whole program.
+
+19. Input & Output Parameters
+    by passing the output variable as an argument to the void function - By Reference or By Pointer -
+
+20. Returning from Functions
+    * Default is by value
+    * Compiler does some optimizations to return by reference
+
+21. Lambda Functions
+    A mechanism to set up anonymous functions.
+
+    <-> Lambda function signature:
+        [capture list](parameters) -> return_type {
+            //! function body
+        };
+
+    <-> Assign name to a Lambda function:
+        auto func = [capture list](parameters) -> return_type {
+            //! function body
+        };
+        func(arguments); //! calling it
+
+    <-> Directly call a Lambda function:
+        [capture list](parameters) -> return_type {
+            //! function body
+        }(arguments);
+
+    * Lambda function can't access things outside of its body.
+    * To have access to these things, we pass them in the capture list.
+    * Variables in capture list don't get changes reflected from original variables, except if they're passed by reference.
+    * [=] capture everything by value
+    * [&] capture everything by reference
+
+22. Template Functions
+    * Create a blueprint for repeated functions (overloads).
+    * The compiler generates reel functions for the called template functions.
+
+    template <typename T> T functionName(T a, T b) {
+        return (a > b) ? a : b;
+    }
+
+    functionName<return_type>(a, b); ==> implicit conversion from T to return_type
+
+    * Template specialization:
+        tell the compiler to do something special if I passed a specific type of arguments
+
+    template <>
+    special_type functionName<special_type> (special_type a, special_type b);
+
+23. Concepts
+    * Standard built in concepts and Custom concepts
+    * Concepts are a mechanism to place constraints on our template type parameters
+
+    //Syntax1:
+    template <typename T>
+    requires std::integral<T> <=== our template function accepts only int parameters
+    T functionName(T a, T b) {
+        return a+b;
+    };
+
+    //Syntax2:
+    template <typename T>
+    T functionName(T a, T b) requires std::integral<T> {
+        return a+b;
+    };
+
+    //Syntax3:
+    template <typename T>
+    requires std::is_integral_v<T>
+    T functionName(T a, T b) {
+        return a+b;
+    };
+
+    //Syntax4:
+    template <std::integral T>
+    T functionName(T a, T b) {
+        return a+b;
+    };
+
+    <==> Create Custom Concepts:
+    //Syntax1:
+    template <typename T>
+    concept conceptName = std::is_integral_v<T>;//! specify what are the concepts to satisfy
+
+    //Syntax2:
+    template <typename T>
+    concept conceptName = requires(T a, T b) {
+        //! specify what are the concepts to satisfy
+    };
+
+24. Requires clause
+25. Classes
+    * Classes are a mechanism to build our own types.
+    * Classes are a blueprint and we create instances from them (objects).
+    * Members can't be references.
+
+    class className {
+        public: //! Member variables
+            int member1 = value1;
+            double member2 = value2;
+
+        public: //! Behaviors
+            int doSomething() {
+                return something;
+            }
+    };
+    ==> Here, we specify public so members are accessible from outside of the class
+
+    <==> Constructors:
+        * A special kind of methods that are called when an instance of a class is created
+            _> No return type
+            _> Same name as the class
+            _> Can have parameters. Can also have an empty parameter list
+            _> Usually used to initialize member variables of a class
+
+        * className() = default; ==> generates an empty constructor
+
+    <==> Destructors:
+        * A special methods that are called when an object dies.
+        * They are needed when the object needs to release some dynamic memory, or some other kind of clean up.
+        * Called when:
+            _ a local stack object goes out of scope
+            _ a heap object is released with delete
+            _ an object is passed by value to a function
+            _ a local object is returned from a function
+
+26. Setters & Getters
+    * Methods to read and modify member variables of a class
+
+27. Classes & Pointers
+    * Manage a stack object through pointers
+        _> Cylinder c1(10, 4);
+        _> Cylinder *p_c1 = &c1;
+
+    * Create objects on the heap (new operator)
+        _> Cylinder *p_cylinder = new Cylinder(1, 8);
+        _> delete p_cylinder;
+
+28. Structures
+    * Classes members are private by default
+    * Structures members are public by default
+
+29. Inheritance
+    * Building types in top of other types.
+    * With public inheritance, derived classes can access and use public members 
+    of the base class, but the derived class can't directly access private members.
+
+    ==> Public inheritance: (base class) ==> (derived class)
+        everything public    ==> public
+        everything protected ==> protected
+        everything private   ==> private
+
+    ==> Protected inheritance: (base class) ==> (derived class)
+        everything public    ==> protected
+        everything protected ==> protected
+        everything private   ==> private
+
+    ==> Private inheritance: (base class) ==> (derived class)
+        everything public    ==> private
+        everything protected ==> private
+        everything private   ==> private
+
+30. Protected Members
+    * Using the protected specifier, protected members are accessible in the derived classes but not outside the class.
+
+31. Initializer Lists (for Custom Constructors with Inheritance)
+    ==> This is an Engineer constructor
+    Engineer::Engineer(std::string full_name, int age, std::string address, int contract_number)
+    : full_name(full_name), age(age), address(address), contract_number(contract_number) {
+        #some code here
+    }
+    ==> This won't work because full_name, age, address don't belong to the Person class
+    ==> How to do it:
+    Engineer::Engineer(std::string full_name, int age, std::string address, int contract_number)
+    : Person(full_name, age, address), contract_number(contract_number) {
+        #some code here
+    }
+
+32. Polymorphism
+    * Polymorphism means multiple forms
+    ==> Manage all kinds of derived class objects
+    ==> Base class pointer or Base class reference can take multiple forms
+
+    Shape *shape1 = new Circle;
+    Shape *shape2 = new Rectangle;
+    Shape *shape3 = new Oval;
+
+    Shape& ref1 = &shape1;
+    Shape& ref2 = &shape2;
+    Shape& ref3 = &shape3;
+
+    * Static binding is the default behavior
+    * Polymorphism === Dynamic binding

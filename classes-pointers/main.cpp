@@ -1,6 +1,5 @@
 #include <iostream>
-#include "cylinder.h"
-#include "constants.h"
+#include "cylinder.cpp"
 
 int main() {
     //! Stack Object

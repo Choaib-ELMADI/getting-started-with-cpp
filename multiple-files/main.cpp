@@ -1,5 +1,5 @@
 #include <iostream>
-#include "compare.h"
+#include "compare.cpp"
 
 int main() {
     int maximum = maxNumber(15, 123);

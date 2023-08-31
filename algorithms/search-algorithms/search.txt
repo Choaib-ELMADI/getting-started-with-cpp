@@ -1,0 +1,16 @@
+1. Searching Algorithms:
+    Searching algorithms are designed to check for an element or retrieve an element from any data structure 
+    where it is stored.
+    Based on the type of search operation, these algorithms are classified into two categories:
+        > Sequential Search: traverse the list or the array element by element.
+        EXAMPLE ==> Linear Search
+        <=> Time complexity of a linear search algorithm : O(n) => 'n' is the number of elements in the collection. 
+            This means that the time taken to perform the search increases linearly with the size of the collection.
+        <=> Space complexity of a linear search algorithm: O(1) => which means it uses a constant amount of additional 
+            memory regardless of the size of the collection.
+
+        > Interval Search: designed for searching in sorted data structures. They target the center of the search
+        structure and divide search space in a half.
+        EXAMPLE ==> Binary Search
+        <=> Time complexity of a binary search algorithm : O(log n) => 'n' is the number of elements in the collection.
+        <=> Space complexity of a binary search algorithm: O(1) => which means it uses a constant amount of memory.

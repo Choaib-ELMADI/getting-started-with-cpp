@@ -1,0 +1,18 @@
+1. Trees:
+    - EXAMPLE:
+        > Family Trees
+        > Folders structure
+
+    - A tree consists of nodes
+    - Nodes are connected together with edges (children can't interconnect)
+    - Top node is called root node (node without a parent)
+    - Last node is called leaf node (node without a child)
+
+    - Types:
+        > Regular tree (parent-child relationship)
+        > Binary tree (each node has <= 2 children)
+
+    - Binary Search Tree (BST):
+        Just like a binary tree but the values are in a specific way
+            > left child has a less value than the parent
+            > right child has a greater value than the parent

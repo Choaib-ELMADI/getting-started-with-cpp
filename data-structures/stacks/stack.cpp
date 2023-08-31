@@ -18,7 +18,7 @@ int main() {
     cout << "Size after pushing: " << nums.size() << endl;
 
     nums.pop(); //! Remove element from the stack (remove from the end)
-    cout << "Size after poping: " << nums.size() << endl;
+    cout << "Size after popping: " << nums.size() << endl;
 
     return 0;
 }

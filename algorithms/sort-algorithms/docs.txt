@@ -1,0 +1,10 @@
+1. Sorting Algorithms:
+    Sorting algorithms are designed to sort the given data structure.
+    EXAMPLE ==> Insertion Sort: 
+        > Each time we get a new element, we put it in the its right spot.
+        > We always shift greater element to the right (NO SWAPPING).
+        <=> Time complexity of an insertion sort algorithm : O(n²) => 'n' is the number of elements in the collection.
+            O(n) for iterating & O(n) for shifting (Worst Case)
+            O(n) for iterating & O(1) for shifting (Best Case)
+        <=> Space complexity of an insertion sort algorithm: O(1) => which means it uses a constant amount of additional 
+            memory regardless of the size of the collection.

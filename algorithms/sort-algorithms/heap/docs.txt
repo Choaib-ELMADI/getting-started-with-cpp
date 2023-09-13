@@ -1,0 +1,66 @@
+1. Array Representation of a Binary Tree:
+
+                    A
+                   / \
+                 B     C
+               / \     / \
+              D   E   F   G
+
+        Table:  A  B  C  D  E  F  G
+        index:  1  2  3  4  5  6  7
+
+        - if a node is at index i:
+            => its left child is at index : 2*i
+            => its right child is at index: 2*i + 1
+            => its parent is at index     : i / 2 ==> floor value
+
+2. Full Binary Tree:
+
+                    A ---------- 0
+                   / \
+                 B     C ------- 1
+               / \     / \
+              D   E   F   G ---- 2
+
+        - At the maximum height, it has max number of nodes === 2^(h+1) - 1
+
+3. Complete Binary Tree:
+        - A complete binary tree is a full binary tree up to height h - 1, last level elements are filled left -> right
+        - The array representation of the binary tree doesnt contain any gaps
+
+                    A
+                   / \
+                 B     C
+               / \
+              D   E
+
+        Table:  A  B  C  D  E
+        index:  1  2  3  4  5
+
+        ==> This is a Complete Binary Tree
+
+                    A
+                   / \
+                 B     C
+                       / \
+                      F   G
+
+        Table:  A  B  C  -  -  F  G
+        index:  1  2  3  4  5  6  7
+
+        ==> This is not a Complete Binary Tree
+
+4. Heap:
+        - A heap is a complete binary tree such as each node has either greater or smaller values than its descendants nodes
+        smaller (start from max value) ==> Max Heap
+        greater (start from min value) ==> Min Heap
+
+    <==> Heap Sort (Max Heap):
+        * Let's say we have a heap
+        * When we delete a node, we must delete the root node
+        * Last element in complete binary tree comes to the root place
+          (NOW, WE HAVE AN EMPTY PLACE AT THE END) ==> (PUT REMOVED ELEMENT THERE)
+        * Adjust elements to preserve properties of heap
+          (COMPARE THE TWO CHILDREN) ==> (SWAP ROOT WITH GREATER ONE)
+
+        Repeating this, we get a sorted array (increasing) of all the values.

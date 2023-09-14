@@ -8,3 +8,6 @@
             O(n) for iterating & O(1) for shifting (Best Case)
         <=> Space complexity of an insertion sort algorithm: O(1) => which means it uses a constant amount of additional 
             memory regardless of the size of the collection.
+
+    EXAMPLE ==> Heap Sort:
+        Heap Sort is a comparison-based sorting algorithm that falls under the category of "in-place" sorting algorithms, meaning it doesn't require additional memory space proportional to the size of the input. It has a time complexity of O(n log n), making it efficient for sorting large datasets. Heap Sort is based on the data structure called a heap, which is a special kind of binary tree.

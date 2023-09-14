@@ -64,3 +64,9 @@
           (COMPARE THE TWO CHILDREN) ==> (SWAP ROOT WITH GREATER ONE)
 
         Repeating this, we get a sorted array (increasing) of all the values.
+
+    <==> Heap Sort Steps:
+      1) Convert the array into a binary tree
+      2) Convert the binary tree into a max (min) heap ==> Heapify
+      3) Delete root node, swap it with last element   ==> Heapify
+      4) Repeat 3) until max heap becomes empty

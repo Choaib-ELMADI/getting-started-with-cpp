@@ -1,0 +1,8 @@
+1. Backtracking:
+    * Backtracking algorithm follows the brute force approach and DFS.
+    -> Brute force approach: For any given problem, try all the possible solutions and pick up desired ones.
+    -> Backtracking is used when you have multiple solutions and you want all of them.
+    -> Following brute force approach, we generate a state space tree.
+
+2. Branch & Bound:
+    * Branch & Bound algorithm follows the brute force approach and BFS.
